@@ -31,7 +31,7 @@ You will find a 3D-printable PCB case inside the case folder.
 * If Mbusino do not find a known network, he start an AP for 5 minutes. After this period, he will restart and search again.
 * In known networks, you will find the IP of the portal under **MBusino** in your router.
 
-<img src="pictures/MBusinoP1_Setup_Portal.jpg" width="300" height="600">
+<img src="pictures/MBusinoP1_Setup_Portal.png" width="300" height="600">
 
 ## MQTT Output
 
