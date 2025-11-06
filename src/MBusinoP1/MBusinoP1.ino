@@ -492,8 +492,8 @@ void loop() {
         const char *units = root[i]["units"];
         double value = root[i]["value_scaled"].as<double>();
 
-        //client.publish(String(String(userData.mbusinoName) + "/DLMS/" + String(name) + "_OBIScode").c_str(), obisString);
-        client.publish(String(String(userData.mbusinoName) + "/DLMS/" + String(obisString) + String(name)).c_str(), String(value, 3).c_str());
+        client.publish(String(String(userData.mbusinoName) + "/DLMS/" + String(name) + "_OBIScode").c_str(), obisString);
+        client.publish(String(String(userData.mbusinoName) + "/DLMS/" + String(name)).c_str(), String(value, 3).c_str());
         client.publish(String(String(userData.mbusinoName) + "/DLMS/" + String(name) + "_unit").c_str(), units);
 
         //Serial.println(String("OBIScode = " + String(obisString)).c_str());
