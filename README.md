@@ -31,7 +31,7 @@ You will find a 3D-printable PCB case inside the case folder.
 * If Mbusino do not find a known network, he start an AP for 5 minutes. After this period, he will restart and search again.
 * In known networks, you will find the IP of the portal under **MBusino** in your router.
 
-<img src="pictures/MBusinoP1_Setup_Portal.jpg" width="300" height="600">
+<img src="pictures/MBusinoP1_Setup_Portal.png" width="300" height="600">
 
 ## MQTT Output
 
@@ -58,9 +58,9 @@ https://github.com/Zeppelin500/MBusinoP1/tree/main/tutorial
 
 ## Credits
 
-Thanks to **DomiStyle** for https://github.com/DomiStyle/esphome-dlms-meter where some ideas for decoding come from.
+- Thanks to **DomiStyle** for https://github.com/DomiStyle/esphome-dlms-meter where some ideas for decoding come from.
 
-Thanks to **HWHardsoft** for the code base of the DlmsCosemLib Library https://github.com/HWHardsoft/DLMS-MBUS-Reader and for providing the piggyback M-Bus slave.
+- Thanks to **HWHardsoft** for the code base of the DlmsCosemLib Library https://github.com/HWHardsoft/DLMS-MBUS-Reader and for providing the piggyback M-Bus slave.
 
 ## Current topics
 
