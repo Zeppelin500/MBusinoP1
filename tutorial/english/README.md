@@ -8,7 +8,8 @@
 
 4. Configure your Network, Mqtt-Broker and decryption key. If you want to use Ethernet, leave the WiFi fields empty.
 
-![SetupPortal](https://github.com/Zeppelin500/MBusinoP1/blob/main/pictures/MBusino_Setup_Portal.png)
+![SetupPortal](https://github.com/Zeppelin500/MBusinoP1/blob/main/pictures/MBusinoP1_Setup_Portal.png)
+
 
 * With multible MBusino in network, you have to change the name or it caouse in network problems .
 * At MQTT Broker you can set an IP or a address. E.g. **192.168.1.7** or **test.mosquitto.org** no https:// oder mqtt:// only addresse
