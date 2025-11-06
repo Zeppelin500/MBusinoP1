@@ -58,9 +58,9 @@ https://github.com/Zeppelin500/MBusinoP1/tree/main/tutorial
 
 ## Credits
 
-Thanks to **DomiStyle** for https://github.com/DomiStyle/esphome-dlms-meter where some ideas for decoding come from.
+- Thanks to **DomiStyle** for https://github.com/DomiStyle/esphome-dlms-meter where some ideas for decoding come from.
 
-Thanks to **HWHardsoft** for the code base of the DlmsCosemLib Library https://github.com/HWHardsoft/DLMS-MBUS-Reader and for providing the piggyback M-Bus slave.
+- Thanks to **HWHardsoft** for the code base of the DlmsCosemLib Library https://github.com/HWHardsoft/DLMS-MBUS-Reader and for providing the piggyback M-Bus slave.
 
 ## Current topics
 
