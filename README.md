@@ -39,11 +39,11 @@ You will find a 3D-printable PCB case inside the case folder.
 
 ## Home-Assistant
 
-### TBD! Autodiscovery is not ready until now.
-
 If you use Home Assistant, MBusino supports autodiscover. You need only the MQTT integration and MBusino will be find as device with all records.
 Every 256th record message is a autodiscover message. 
 If you use not Home Assistant, no matter. All records will be send as MQTT message.
+
+<img src="pictures/HA_Autodiscovery.png" width="300" height="600">
 
 ## Tutorial
 

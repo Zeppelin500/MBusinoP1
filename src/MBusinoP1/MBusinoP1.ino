@@ -54,7 +54,7 @@
 
 #include <Wire.h>
 
-#define MBUSINO_VERSION "0.9.23D"
+#define MBUSINO_VERSION "0.1.0"
 
 HardwareSerial MBusSerial(1);
 
@@ -145,6 +145,7 @@ uint8_t hexKey[16] = { 0 };
 #include "html.h"
 #include "mqtt.h"
 #include "guiServer.h"
+#include "autodiscover.h"
 
 void setup() {
   pinMode(LED_BUILTIN, OUTPUT);  // LED on if MQTT connectet to server
@@ -478,15 +479,39 @@ void loop() {
     fields = DlmsCosem.decode(&plaintext[0], payload_length, root);
     Serial.println(fields);
     serializeJson(root, jsonstring);  // store the json in a global array
-    client.publish(String(String(userData.mbusinoName) + "/MBus/jsonstring").c_str(), jsonstring);
+    client.publish(String(String(userData.mbusinoName) + "/DLMS/jsonstring").c_str(), jsonstring);
+
+
+
 
     // Send Records
     if (fields > 0) {
+      adMbusMessageCounter++;
+
       const char *timestamp = root[0]["timestamp"];
+      const char *meternumber = root[fields]["meter_number"]; // after the last Record  
+      client.publish(String(String(userData.mbusinoName) + "/DLMS/Meternumber").c_str(), meternumber);
+      Serial.println(String("MeterNumber = " + String(meternumber)).c_str());  
       client.publish(String(String(userData.mbusinoName) + "/DLMS/Timestamp").c_str(), timestamp);
       Serial.println(String("Timestamp = " + String(timestamp)).c_str());
 
+      if(userData.haAutodisc == true && adMbusMessageCounter == 3){  //every 264 message is a HA autoconfig message
+        strcpy(adVariables.haName,"Meternumber");
+        strcpy(adVariables.haUnits,"");         
+        strcpy(adVariables.stateClass,"total");
+        strcpy(adVariables.deviceClass,"");     
+        haHandoverMbus(0);
+
+        strcpy(adVariables.haName,"Timestamp");
+        strcpy(adVariables.haUnits,"");         
+        strcpy(adVariables.stateClass,"total");
+        strcpy(adVariables.deviceClass,"timestamp");     // the format is not HA compatible yet strcpy(adVariables.deviceClass,"timestamp");   
+        haHandoverMbus(0);        
+      }
+
+
       for (uint8_t i = 1; i < fields; i++) {
+        uint8_t code = root[i]["code"].as<int>();
         const char *obisString = root[i]["obis"];
         const char *name = root[i]["name"];
         const char *units = root[i]["units"];
@@ -499,6 +524,18 @@ void loop() {
         //Serial.println(String("OBIScode = " + String(obisString)).c_str());
         Serial.println(String(String(name) + " = " + String(value, 3)).c_str());
         //Serial.println(String(String(name) + " = " + String(units)).c_str());
+
+        if(userData.haAutodisc == true && adMbusMessageCounter == 3){  //every 264 message is a HA autoconfig message
+          strcpy(adVariables.haName,name);
+          if(units != NULL){
+            strcpy(adVariables.haUnits,units);
+          }else{
+            strcpy(adVariables.haUnits,""); 
+          }
+          strcpy(adVariables.stateClass,DlmsCosem.getStateClass(code));
+          strcpy(adVariables.deviceClass,DlmsCosem.getDeviceClass(code));     
+          haHandoverMbus(i+1);
+        }
       }
     }else{
         Serial.println(String("Failure Code = " + String(fields)).c_str());
