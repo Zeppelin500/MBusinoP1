@@ -43,7 +43,7 @@ If you use Home Assistant, MBusino supports autodiscover. You need only the MQTT
 Every 256th record message is a autodiscover message. 
 If you use not Home Assistant, no matter. All records will be send as MQTT message.
 
-<img src="pictures/HA_Autodiscovery.png" width="300" height="600">
+<img src="pictures/HA_Autodiscovery.png" width="600" height="600">
 
 ## Tutorial
 
