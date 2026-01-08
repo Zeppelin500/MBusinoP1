@@ -8,7 +8,7 @@ struct autodiscover {
   char deviceClassString[50] = {0};
 } adVariables; // home assistand auto discover
 
-const char adValueMbus[] PROGMEM = R"rawliteral({"unique_id":"%s_%s","object_id":"%s_%s","state_topic":"%s/DLMS/%s","name":"%s","value_template":"{{value_json if value_json is defined else 0}}","unit_of_meas":"%s","state_class":"%s","device":{"ids": ["%s"],"name":"%s","manufacturer": "MBusino","mdl":"V%s"},%s"availability_mode":"all"})rawliteral";
+const char adValueMbus[] PROGMEM = R"rawliteral({"unique_id":"%s_%s","default_entity_id":"sensor.%s_%s","state_topic":"%s/DLMS/%s","name":"%s","value_template":"{{value_json if value_json is defined else 0}}","unit_of_meas":"%s","state_class":"%s","device":{"ids": ["%s"],"name":"%s","manufacturer": "MBusino","mdl":"V%s"},%s"availability_mode":"all"})rawliteral";
 const char adTopicMbus[] PROGMEM = R"rawliteral(homeassistant/sensor/%s/%s/config)rawliteral";
 
 void haHandoverMbus(uint8_t haCounter){ // haCounter is the "i+1" at the for() in main

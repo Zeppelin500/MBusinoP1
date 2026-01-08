@@ -1,5 +1,5 @@
 # MBusinoP1
-[![version](https://img.shields.io/badge/version-0.1.0-brightgreen.svg)](CHANGELOG.md)<br/>
+[![version](https://img.shields.io/badge/version-0.1.1-brightgreen.svg)](CHANGELOG.md)<br/>
 ### M-Bus P1 DLMS / COSEM --> MQTT-Gateway for austrian energy meters
 
 A **Plug and Play** solution.
